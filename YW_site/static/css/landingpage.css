@@ -1,0 +1,77 @@
+*{
+    text-align: center;
+  }
+  body{
+    background-color: black;
+    border: brown 2px solid;
+    padding-bottom: 40px;
+  }
+  tr{
+    margin: auto;
+  }
+  table{
+    text-align: center;
+    margin: auto;
+  }
+  #title{
+    font-family: 'Krona One';
+    font-size: 4em;
+    color: brown;
+    margin-bottom: 0px;
+  }
+  #DevNotes{
+    background-color: Black;
+    border: 20px solid white;
+    border-radius: 7px;
+  }
+  .subheading{
+    color: white;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .notes{
+    color: white;
+    font-weight: bold;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: left;
+  }
+  #dev_intro{
+    color: white;
+    font-weight: bolder;
+    font-size: 24px;
+    margin-left: 0px;
+  }
+  .container{
+    position: relative;
+    color: white;
+  }
+  .text_block{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    background-blend-mode: normal;
+    padding: 5px;
+    font-family: Arial;
+    font-size: larger;
+    opacity: .7;
+    border: 5px solid black;
+    border-radius: 5px;
+  }
+  .photos{
+    width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: brown solid 10px;
+    border-radius: 5px;
+    -webkit-filter: brightness(70%);
+    -webkit-filter: contrast(140%);
+    -webkit-filter: saturate(150%);
+  }
+  .photos:hover{
+    -webkit-filter: brightness(140%);
+  }

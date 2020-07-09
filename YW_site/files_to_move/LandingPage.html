@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Krona+One&display=swap" rel="stylesheet">
+  <title>Yard Works | Welcome</title>
+
+  <style>
+    *{
+      text-align: center;
+    }
+    body{
+      background-color: black;
+      border: brown 2px solid;
+      padding-bottom: 40px;
+    }
+    tr{
+      margin: auto;
+    }
+    table{
+      text-align: center;
+      margin: auto;
+    }
+    #title{
+      font-family: 'Krona One';
+      font-size: 4em;
+      color: brown;
+      margin-bottom: 0px;
+    }
+    #DevNotes{
+      background-color: Black;
+      border: 20px solid white;
+      border-radius: 7px;
+    }
+    .subheading{
+      color: white;
+      font-weight: bold;
+      margin-left: 2px;
+      text-align: left;
+      margin-left: 20%;
+      margin-right: 20%;
+    }
+    .notes{
+      color: white;
+      font-weight: bold;
+      margin-left: 20%;
+      margin-right: 20%;
+      text-align: left;
+    }
+    #dev_intro{
+      color: white;
+      font-weight: bolder;
+      font-size: 24px;
+      margin-left: 0px;
+    }
+    .container{
+      position: relative;
+      color: white;
+    }
+    .text_block{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: black;
+      background-blend-mode: normal;
+      padding: 5px;
+      font-family: Arial;
+      font-size: larger;
+      opacity: .7;
+      border: 5px solid black;
+      border-radius: 5px;
+    }
+    .photos{
+      width: 300px;
+      margin-left: 10px;
+      margin-right: 10px;
+      border: brown solid 10px;
+      border-radius: 5px;
+      -webkit-filter: brightness(70%);
+      -webkit-filter: contrast(140%);
+      -webkit-filter: saturate(150%);
+    }
+    .photos:hover{
+      -webkit-filter: brightness(140%);
+    }
+  </style>
+
+</head>
+<body>
+  <h1 id="title">Welcome</h1>  
+  <table id="table" cellspacing=20>
+    <!-- ROW #1: Libiray, Sales, Inventory  -->
+    <tr>
+      <td>
+        <div class="container">
+          <a href="library.html"><img src="Photos/LandingPage/Equiptment.jpg" alt="img not found" class="photos"></a>
+          <div class="text_block">🛠 Equiptment Library</div>
+        </div>
+      </td>
+      <td>
+        <div class="container">
+          <a href="#"><img src="Photos/LandingPage/sales.jpeg" alt="img not found" class="photos"></a>
+          <div class="text_block" style="text-decoration: line-through">Sales</div>
+        </div>
+      </td>  
+      <td>
+        <div class="container">
+          <a href="#"><img src="Photos/LandingPage/inventory.jpg" alt="img not found" class="photos"></a>
+          <div class="text_block" style="text-decoration: line-through">Inventory</div>
+        </div>
+      </td>
+    </tr>
+    <br>
+    <!-- ROW #2: Production, Info, Fleet -->
+    <tr>
+      <td>
+        <div class="container">
+          <a href="#"><img src="Photos/LandingPage/production.jpg" alt="img not found" class="photos"></a>
+          <div class="text_block" style="text-decoration: line-through">Production</div>
+        </div>
+      </td>
+      <td>
+        <div class="container">
+          <a href="#"><img src="Photos/LandingPage/information.jpg" alt="img not found" class="photos"></a>
+          <div class="text_block" style="text-decoration: line-through">Contact Information</div>
+        </div>
+      </td>
+      <td>
+        <div class="container">
+          <a href="#"><img src="Photos/LandingPage/fleet.jpg" alt="img not found" class="photos"></a>
+          <div class="text_block" style="text-decoration: line-through">Map</div>
+        </div>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td id="DevNotes" colspan="12">
+        <h1 style="color: yellow;">!!!  Developer Notes  !!!</h1>
+        <h1 class="subheading" style="color: white;"> Site under construction!</h1>
+        <p class="notes" style="color: white; font-size: 18px;">
+          Not everything is working yet! If you have any questions, suggestions, or problems please contact: <br> 
+          Noah Caldwell - (804)814-5153 - noahcaldwell36@protonmail.com
+        </p>
+        <h1 class="subheading">Current State - version 0.0.1</h1>
+        <p class="notes">
+          The website is in the begining stages of development. Currently my focus is building the Equiptment
+          library. I am in the process of forming the layout. After that is looking good, I plan to work on
+          the functionality that will allow the user to easily sort, filter, add to, or edit the library. Adding
+          all of the equiptment will be easier to do after all of this for technical reasons. 
+        </p>
+        <h1 class="subheading"></h1>
+        
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

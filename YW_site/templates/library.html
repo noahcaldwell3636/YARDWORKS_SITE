@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Yard Works | Library</title>
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<!-- my css, delete the 'now U' tag on deployment, it reloads css each refresh --> 
+	<link rel="stylesheet" href="{% static "css/library.css" %}?{% now "U" %}"> 
+
+</head>
+
+<body>
+	
+	<div id='top-bar'>
+		<table>
+			<tr>
+				<td>
+					<a href="/Home">
+						<button type="button" class="btn home-btn"> <<< </button>
+					</a>
+				</td>
+				<td>
+				<h1 id='title'>Yard Works | Librar</h1>
+				</td>
+				<td>
+					<div id='equipment_sheet_selection' class="">
+						<p>Equipment Sheets</p>
+						<div class="btn-group right-buttons" role="group" aria-label="Basic example">
+							<a href="/library/sheets">
+								<button type="button" class="btn right-button">Equipement Sheets</button>
+							</a>
+							<a href="/library/Missing-info">
+								<button type="button" class="btn right-button">Missing Info</button>
+							</a>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+	
+    <div class="sticky-top column left"> <!-- keeps dash inline with table -->
+		<h1 id="dash_title">Dashboard</h1>
+
+		<!-- Filter Dropdown -->
+		<div class="dropdown">
+			<button class="dropbtn">Filter Items</button>
+			<div class="dropdown-content">
+				<a href="#">Loaders</a>
+				<a href="#">Trucks</a>
+				<a href="#">ect.</a>
+			</div>
+			<p class="right_dis">No Filter</p>
+		</div>
+
+		<!-- Sort Dropdown -->
+		<div class="dropdown">
+			<button class="dropbtn">Sort</button>
+			<div class="dropdown-content">
+				<a href="../ByID/">By: ID</a>
+				<a href="../ByMake/">By: Make</a>
+				<a href="../ByLocation/">By: Location</a>
+			</div>
+			<p class="right_dis">ID</p>
+		</div>
+	</div> <!-- end dashboard column left div -->
+
+	<!-- Data table -->
+	<div class="column right"> <!-- Keeps table inline with dash -->
+		<table class="datatable">
+
+			<!-- Table Headers-->
+			<tr>
+				<th>ID</th>
+				<th>Make</th>
+				<th>Model</th>
+				<th>Year</th>
+				<th>VIN</th>
+				<th>Location</th>
+				<th>Div.</th>
+			</tr>
+
+			<!-- Table Data -->
+			{% if eq_list %}
+				{% for eq in eq_list %}
+					<tr class="greyer">
+						<td class="ID">
+							<a id="to_eq_page" href="/../library/equipment/{{ eq.ident }}">{{ eq.ident }}</a>
+						</td>
+						<td>{{ eq.make }}</td>
+						<td>{{ eq.model }}</td>
+						<!-- fill blank year fields-->
+						{% if eq.year == "" %}
+							<td>XXXX</td>
+						{% else %}
+							<td>{{ eq.year }}</td>
+						{% endif %}
+						<!-- fill blank VIN fields-->
+						{% if eq.vin == "" %}
+							<td>XXXXXXXXXXXX</td>
+						{% else %}
+							<td>{{ eq.vin }}</td>
+						{% endif %}
+						<td>{{ eq.location_code }}
+						<td>{{ eq.department_code }}</td>
+					</tr>
+				{% endfor %} <!-- end equipment list loop-->
+			{% else %}
+					<h1>Data not found</h1>
+			{% endif %} 
+		</table>  <!-- end data table -->
+	</div> <!-- end right column div -->
+			
+
+</body>
+</html>

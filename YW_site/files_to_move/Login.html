@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yard Works | Login</title>
+    <style>
+        *{
+            text-align: center;
+        }
+        body{
+            background-color: black;
+            border: brown 40px solid;
+            height: 1000px;
+        }
+        #logo_img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1em;
+            width: 50%;
+            max-width: 20%;
+        }
+        label{
+            display: inline-block;
+            width: 140px;
+            text-align: center;    
+            font-size: 2em;
+            padding-top: 1em;
+        }
+        .block{
+            color: brown;
+        }
+        .input{
+            margin-top: .5em;
+            height: 30px;
+            width: 300px;
+            font-size: 20px;
+        }
+        #login{
+            margin-top: 2em;
+            height: 50px;
+            width: 80px;
+            border-radius: 25px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <img src="Photos/Logo.png" alt="Yard works logo online image not found" id="logo_img">
+
+    <div class="block">
+        <label>Email: </label><br>
+        <input type="email" placeholder="Enter Email" class="input" required/>
+    </div>
+    <div class="block">
+        <label>Password:</label><br>
+        <input type="password" placeholder="Enter Password" class="input" required/>
+    </div>
+
+    <a href="LandingPage.html"><input type="submit" value="Login" id="login"></a>
+    
+</body>
+</html>

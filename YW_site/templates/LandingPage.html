@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Krona+One&display=swap" rel="stylesheet">
+  <title>Yard Works | Welcome</title>
+	<link rel="stylesheet" href="{% static "css/landingpage.css" %}?{% now "U" %}"> 
+</head>
+<body>
+  <h1 id="title">Welcome</h1>  
+  <table id="table" cellspacing=20>
+    <!-- ROW #1: Libiray, Sales, Inventory  -->
+    <tr>
+      <td>
+        <div class="container">
+          <a href="/../library/ByID"><img src="{% static "photos/LibraryCover.jpg" %}" alt="img not found" class="photos"></a>
+          <a href="/../library/ByID"><div class="text_block">🛠 Equiptment Library</div></a>
+        </div>
+        <td>
+          <div class="container">
+            <a href="/../reports/sales/JimsCustomers/default">
+              <img src="{% static "photos/ReportCover.jpg" %}" alt="img not found" class="photos">
+            </a>
+            <a href="/../reports/sales/JimsCustomers/default"><div class="text_block">Reports</div></a>
+          </div>
+        </td>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td id="DevNotes" colspan="12">
+        <h1 style="color: yellow;">!!!  Developer Notes  !!!</h1>
+        <h1 class="subheading" style="color: white;"> Site under construction!</h1>
+        <p class="notes" style="color: white; font-size: 18px;">
+          Not everything is working yet! If you have any questions, suggestions, or problems please contact:
+          <br><br>
+          Noah Caldwell - (804)814-5153 - ncaldwell@yardworksva.com
+        </p>
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

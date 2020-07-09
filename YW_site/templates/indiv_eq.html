@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yard Works | {{ eq.ident }}</title>
+    <!-- bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!-- my css, delete the 'now U' tag on deployment, it reloads css each refresh --> 
+    <link rel="stylesheet" href="{% static "css/indiv_eq.css" %}?{% now "U" %}"> 
+    
+</head>
+<body>
+    <!-- Title header -->
+    <div id="title">
+        <p class="description">
+            <a href="../ByID" class="totablebtn">&#8630;</a>
+            {{ eq.ident }} - {% if eq.make and eq.model %} {{ eq.make }} {{ eq.model }} {% else %} Make/Model not found {% endif %}
+            <a href="{{end}}" class="pagebtn">&#x23ED;</a>
+            <a href="{{next}}" class="pagebtn">&#129094;</a>
+            <a href="{{prev}}" class="pagebtn">&#129092;</a>
+            <a href="{{start}}" class="pagebtn">&#x23EE;</a>
+        </p>
+    </div> 
+    <!-- End Title Header -->
+    <!-- Main Div - Vehicle info -->
+    <div class="container fill">
+        <!-- Still Main Vehicle Info Div -->
+        <div class="row">
+            <!-- Left Column -->
+            <div class="col-3">
+                <!-- Missing  -->
+                <button type="button" class="btn btn-danger" id='missing-att-button'>*Missing Attributes</button>
+                <!-- Space -->
+                <div> &nbsp; </div> 
+                <!-- Current Miles/Hours Box -->
+                <div class="my_block">
+                    <p id="unit_head">Current Hours/Miles</p>
+                    <p id="units"> {{ eq.current_units }}</p>
+                </div>
+                <!-- End Current Miles/Hours Box -->
+                <div> &nbsp; </div> <!-- Space -->
+                <!-- Service Info Box-->
+                <div class="my_block">
+                    <p class="block_header">Service Costs</p>
+                    {% if eq.oil_a != "" %} <p class="filter"> {{eq.oil_a}} </p>{% endif %}
+                    {% if eq.oil_b != "" %} <p class="filter"> {{eq.oil_b}} </p>{% endif %} 
+                    {% if eq.fuel_a != "" %} <p class="filter"> {{eq.fuel_a}} </p>{% endif %}    
+                    {% if eq.fuel_b != "" %} <p class="filter"> {{eq.fuel_b}} </p>{% endif %}    
+                    {% if eq.air_in != "" %} <p class="filter"> {{eq.air_in}} </p>{% endif %}   
+                    {% if eq.air_out != "" %} <p class="filter"> {{eq.air_out}} </p>{% endif %}   
+                    {% if eq.cab_a != "" %} <p class="filter"> {{eq.cab_a}} </p>{% endif %}    
+                    {% if eq.cab_b != "" %} <p class="filter"> {{eq.cab_b}} </p>{% endif %}    
+                    {% if eq.water_sep != "" %} <p class="filter"> {{eq.water_sep}} </p>{% endif %}
+                    {% if eq.oil_gal != "" %} <p class="filter"> {{eq.oil_gal}} </p> {% endif %}
+                </div>
+                <!-- End Service Info Box -->
+                <!-- Total Service Cost Box -->
+                <div class="my_block no_top_border">
+                    {% if eq.main_cost != "" %} <p class="filter"> Total Cost: {{ eq.main_cost }} </p>{% endif %}
+                </div>
+                <!-- End Total Service Box -->
+            </div> 
+            <!-- End Left Column -->
+            <!-- Middle Column -->
+            <div class="col-6">
+                <!-- Vehicle Picture -->
+                {% with img1="photos/equipment/"|add:eq.ident|add:"-P.jpg"%}
+                <img id="main_img" src="{% static img1 %}" alt="Image not found" data-toggle="modal" data-target="#MainModal">
+                <br>
+                {% endwith %}
+                <!-- End Vehicle Picture -->
+                <!-- Picture Zoom Pop-up On-click -->
+                <div class="modal fade" id="MainModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{eq.ident}} Image</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {% with img1="photos/equipment/"|add:eq.ident|add:"-P.jpg"%}
+                                    <img class="modal_img" src="{% static img1 %}" alt="Image not found">
+                                {% endwith %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <!-- Picture Popup -->
+                <!--  -->
+                <div class="my_block">
+                    <p>Invoice Total = ${{inv_total}}</p>
+                    <p>Number of services = {{serv_count}}</p>
+                    <p>Service Cost = {{serv_count}} * {{eq.main_cost}} = ${{serv_cost}}</p>
+                    <p>{{eq.current_units}} - {{begin_units}} = {{usage}}</p>
+                </div>
+            </div> 
+            <!-- end middle column -->
+            <!-- Right column -->
+            <div class="col-3">
+                <!-- Tag Image with Zoom in pop-up -->
+                {% with tag1="photos/equipment/"|add:eq.ident|add:"-T.jpg"%}
+                <img id="tag_img" src="{% static tag1 %}" alt="Image not found" data-toggle="modal" data-target="#TagModal">
+                {% endwith %}
+                <div> &nbsp; </div>
+                <!-- Zoom Pop-up On-click -->
+                <div class="modal fade" id="TagModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{eq.ident}} Tag</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                {% with tag1="photos/equipment/"|add:eq.ident|add:"-T.jpg"%}
+                                    <img class="modal_img" src="{% static tag1 %}" alt="Image not found">
+                                {% endwith %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Zoom Pop-up -->
+                <!-- Repair history block -->
+                <div class="my_block">
+                    <p class="block_header">Repair History</p>
+                    <br>
+                    {% for mo in morders reversed %}
+                        <div class="repair_section">
+                            <p class="repair_item">
+                                <!-- order number and date -->
+                                {{mo.date_ordered}} || #{{mo.num}} 
+                                <!-- show if completed-->
+                                {% if mo.status == "2" %} <br> Completed
+                                {% else %} <br>  Incomplete {% endif %}
+                                <!-- Maintenance Comment-->
+                                <br> {% if mo.comment == "" %} No Comment {% else %} {{mo.comment}} {% endif %}
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div> <br> 
+                <!-- end repair history block -->
+            </div> 
+            <!-- end right column (col3) -->
+        </div> 
+        <!-- end row -->
+    </div> 
+    <!-- end container -->
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

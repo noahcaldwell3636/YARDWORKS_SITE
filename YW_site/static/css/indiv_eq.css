@@ -1,0 +1,117 @@
+body{
+    background-color: black
+}
+.description{
+    font-size: 2vw;
+}
+.units{
+    background-color: darkgray;
+}
+.fill{
+    width: 100%;
+}
+#title{
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    background-color: brown;
+    margin: 1%;
+    border: 2% solid brown;
+    border-radius: .5vw;
+    text-align: center;
+}
+#main_img{
+    width: 100%;
+    height: auto;
+    border: 2px solid brown;
+}
+#tag_img{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    float: right;
+    border: 2px solid brown;
+}
+.modal_img{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    float: right
+}
+.pagebtn{
+    color: white;
+    float: right;
+    margin-right: .5vw;
+}
+.totablebtn{
+    color: white;
+    float: left;
+    margin-left: .5vw;
+    font-weight: 900;
+}
+.back_btn{
+    background-color: white;
+    float: left;
+    margin-left: 1%;
+}
+.my_block{
+    background-color: rgb(20,20,20);
+    text-align: center;
+    border: 2px solid brown;
+    align-items: center;
+    color: white;
+}
+.repair_section{
+    border: 4px soild brown;
+    background-color: rgb(26, 26, 26);
+    margin-right: 1vw;
+    margin-left: 1vw;
+    margin-top: 0em;
+    margin-bottom: 0em;
+}
+.filter{
+    font-size: 1.5vw;
+    margin-bottom: 0%;
+    font-weight: 600;
+    color: white;
+}
+.icon {
+    height: 20px;
+    width: 20px;
+    display: block;
+    /* Other styles here */
+}
+.block_header{
+    font-size: 1.8vw;
+    margin-bottom: 0%;
+    font-weight: 600;
+    color: white;
+    text-decoration: underline;
+}
+.repair_item{
+    font-size: 1.2vw;
+    border: outset white 1px;
+}
+.green{
+    color: green;
+}
+.yellow{
+    color: yellow;
+}
+#unit_head{
+    font-size: 1.5vw;
+    margin-bottom: 0%;
+    font-weight: 600;
+    color: white;
+}
+#units{
+    font-size: 2.25vw;
+    font-weight: 900;
+    color: white;
+}
+.no_top_border{
+    border-top: 0px;
+}
+#missing-att-button{
+    background-color: brown;
+}
+

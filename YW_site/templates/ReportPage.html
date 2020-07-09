@@ -1,0 +1,282 @@
+<html lang="en">
+{% load static %}
+{% load replace_spaces %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Reporting page for Yard Works to be fed data from a django framework">
+    <meta name="author" content="Noah Caldwell">
+
+    <title>Yard Works | Reports</title>
+
+    <!-- Google Chart  -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(JSON.parse('{{data_str}}'.replace(/&quot;/g,'"')));
+
+        var options = {
+          // title: "{{company}}",
+          hAxis: {
+            title: 'Date',  
+            titleTextStyle: {color: '#FFF'},
+            textStyle: {color: '#FFF'}
+          },
+          vAxis: {
+            minValue: 0,
+            textStyle: {color: '#FFF'}
+          },
+          backgroundColor: 'transparent',
+          chartArea: {'width': '85%', 'height': '70%'},
+          legend: {
+            'position': 'top',
+            textStyle: {color: 'white'}
+          },
+          colors: ['#0064c2']
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!-- Core Bottstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/report.css" %}" rel="stylesheet">
+    <!-- Google Chart -->
+    <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style>
+
+    <!-- my css, delete the 'now U' tag on deployment, it reloads css each refresh --> 
+	<link rel="stylesheet" href="{% static "css/report.css" %}?{% now "U" %}"> 
+</head>
+
+<!-- Start Body -->
+<body>
+    <!-- Main Container -->
+    <div class="container-fluid">
+        <!-- Start  Row-->
+        <div class="row">
+            <!-- Start Side Dashboard -->
+            <nav class="col-md-2 d-none d-md-block sidebar">
+                <!-- Dash Title -->
+                <h4 class="Dash-title">
+                    Dashboard
+                </h4>
+                <!-- Subcatagory -->
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Report Types</span>
+                    <a class="d-flex align-items-center text-muted" href="#"></a>
+                </h6>
+                <!-- SubCatagory options -->
+                <ul class="nav flex-column">
+                    <li class="nav-item dash-option">
+                        <a class="nav-link dash-option" href="#">Sales</a>
+                    </li>
+                    <li class="nav-item dash-option">
+                        <a class="nav-link dash-option" href="#">Delivery Map</a>
+                    </li>
+                </ul>
+
+                <!-- Subcatory-->
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Saved reports</span>
+                    <a class="d-flex align-items-center text-muted" href="#"></a>
+                </h6>
+                <!-- SubCatagory options -->
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <a class="nav-link dash-option" href="#">Not implemented</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dash-option" href="#">Not implemented</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dash-option" href="#">...</a>
+                    </li>
+                        </a>
+                    </li>
+                </ul>
+            </nav> <!-- End Dashboard -->
+
+            <!-- main page beside dashboard -->
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                <!-- Report Toolbar -->
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <!-- Title -->
+                    <h1 class="report-drop">Company Wide</h1>
+                    <!-- Toolbar Buttons -->
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <!-- Joined Share/Export Buttons -->
+                        <div class="btn-group mr-2">
+                            <button class="btn btn-sm btn-outline-secondary">Share</button>
+                            <button class="btn btn-sm btn-outline-secondary">Export</button>
+                        </div>
+                        <!-- Data Duration/Timeframe Dropdown -->
+                        <button class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                            This week
+                        </button>
+                    </div>
+                </div>
+                <!-- Reposnsive Chart Title -->
+                <div class="dropdown chart-title">
+                    <button class="btn btn-secondary dropdown-toggle chart-title" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{company}}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {% for c in companies %}
+                        <a class="dropdown-item" href="../{{report_name|replace_spaces_with_dashes}}/{{c.name|replace_spaces_with_dashes}}">{{c.name}}</a>
+                    {% endfor %}
+                    </div>
+                </div> 
+                <!-- Chart -->
+                <div id="chart_div" class="my-chart" style="width: 100%; height: 500px;"></div>
+
+                <!-- Table -->
+                <h2>Section title</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm my_table">
+                        <thead>
+                            <tr>
+                            <th>#</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>1,001</td>
+                            <td>Lorem</td>
+                            <td>ipsum</td>
+                            <td>dolor</td>
+                            <td>sit</td>
+                            </tr>
+                            <tr>
+                            <td>1,002</td>
+                            <td>amet</td>
+                            <td>consectetur</td>
+                            <td>adipiscing</td>
+                            <td>elit</td>
+                            </tr>
+                            <tr>
+                            <td>1,003</td>
+                            <td>Integer</td>
+                            <td>nec</td>
+                            <td>odio</td>
+                            <td>Praesent</td>
+                            </tr>
+                            <tr>
+                            <td>1,003</td>
+                            <td>libero</td>
+                            <td>Sed</td>
+                            <td>cursus</td>
+                            <td>ante</td>
+                            </tr>
+                            <tr>
+                            <td>1,004</td>
+                            <td>dapibus</td>
+                            <td>diam</td>
+                            <td>Sed</td>
+                            <td>nisi</td>
+                            </tr>
+                            <tr>
+                            <td>1,005</td>
+                            <td>Nulla</td>
+                            <td>quis</td>
+                            <td>sem</td>
+                            <td>at</td>
+                            </tr>
+                            <tr>
+                            <td>1,006</td>
+                            <td>nibh</td>
+                            <td>elementum</td>
+                            <td>imperdiet</td>
+                            <td>Duis</td>
+                            </tr>
+                            <tr>
+                            <td>1,007</td>
+                            <td>sagittis</td>
+                            <td>ipsum</td>
+                            <td>Praesent</td>
+                            <td>mauris</td>
+                            </tr>
+                            <tr>
+                            <td>1,008</td>
+                            <td>Fusce</td>
+                            <td>nec</td>
+                            <td>tellus</td>
+                            <td>sed</td>
+                            </tr>
+                            <tr>
+                            <td>1,009</td>
+                            <td>augue</td>
+                            <td>semper</td>
+                            <td>porta</td>
+                            <td>Mauris</td>
+                            </tr>
+                            <tr>
+                            <td>1,010</td>
+                            <td>massa</td>
+                            <td>Vestibulum</td>
+                            <td>lacinia</td>
+                            <td>arcu</td>
+                            </tr>
+                            <tr>
+                            <td>1,011</td>
+                            <td>eget</td>
+                            <td>nulla</td>
+                            <td>Class</td>
+                            <td>aptent</td>
+                            </tr>
+                            <tr>
+                            <td>1,012</td>
+                            <td>taciti</td>
+                            <td>sociosqu</td>
+                            <td>ad</td>
+                            <td>litora</td>
+                            </tr>
+                            <tr>
+                            <td>1,013</td>
+                            <td>torquent</td>
+                            <td>per</td>
+                            <td>conubia</td>
+                            <td>nostra</td>
+                            </tr>
+                            <tr>
+                            <td>1,014</td>
+                            <td>per</td>
+                            <td>inceptos</td>
+                            <td>himenaeos</td>
+                            <td>Curabitur</td>
+                            </tr>
+                            <tr>
+                            <td>1,015</td>
+                            <td>sodales</td>
+                            <td>ligula</td>
+                            <td>in</td>
+                            <td>libero</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+ 
+</body>
+</html>
