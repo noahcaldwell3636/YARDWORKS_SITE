@@ -32,16 +32,20 @@ class Equipment(models.Model):
     main_cost = models.CharField(max_length=64, default="None")
     serv_since2019 = models.CharField(max_length=64, default="None")
     current_units = models.CharField(max_length=32, default="None")
-    # Equipment sheet info
-    equipment_sheets = models.ForeignKey(EquipmentSheet, on_delete=models.CASCADE)
     # string representation
     def __str__(self):
         return self.ident
 
+class EquipmentSheetGroup(models.Model):
+    name_of_submitter = models.CharField(max_length=164)
+    beginning_date = models.DateField()
+    end_date = models.DateField()
+
 class EquipmentSheet(models.Model):
-    name = models.CharField(max_length=164)
+    equipment = models.ForeignKey(Equipment, on_delete=models.CASCADE)
     date_submitted = models.DateTimeField()
     image = models.ImageField(upload_to='images/')
+    group = models.ForeignKey(EquipmentSheetGroup, on_delete=models.CASCADE,)
 
 class MaintenanceOrder(models.Model):
     num = models.CharField(max_length=32)

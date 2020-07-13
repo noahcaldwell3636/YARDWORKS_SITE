@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.urls import path
 from library.models import Equipment
+from django.views.decorators.csrf import csrf_protect
+from . import forms
 
 # Default Table View
 def render_table(request):
@@ -90,13 +92,36 @@ def render_indiv_eq(request):
                                                     })
 
 ##################################################################
-#################  EQUIPMENT SHEET TABLE  ########################
+#################  EQUIPMENT SHEETS  #############################
 ##################################################################
 
 def render_eq_sheet_table(request):
     eq_list = Equipment.objects.order_by('ident')
     eq_dict = {'eq_list': eq_list}
     return render(request, 'eq_sheet_table.html', context=eq_dict)
+
+@csrf_protect
+def render_sheet_submission(request):
+    print("()()()()()()()()()()")
+
+    group_form = forms.EquipmentSheetGroup()
+    sheet_form = forms.EquipmentSheetForm()
+
+    if request.method == "POST":
+        form_submission = forms.EquipmentSheetGroup(request.POST)
+        print("post?")
+        if form_submission.is_valid():
+            print("validation succussful!")
+            print(form_submission.cleaned_data)
+        else:
+            print(form_submission.errors)
+    else:
+        print("ran, but not post malone")
+
+    return render(request, 'sheet_submission_form.html', {
+        'group_form':group_form,
+        'sheet_form':sheet_form
+    })
 
 
 ##################################################################

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yard Works | Submit</title>
+
+    <!-- bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<!-- my css, delete the 'now U' tag on deployment, it reloads css each refresh --> 
+	<link rel="stylesheet" href="{% static "css/sheet_submission_form.css" %}?{% now "U" %}"> 
+</head>
+<body>
+    <h1>Equipment Sheet Submission</h1>
+
+    <div class="container">
+        <form method="post" class="form">
+            {% csrf_token %}
+            <label for="{{form.name_of_submitter.id_for_label}}" class="submission_label">
+                Your Name
+            </label>
+            {{group_form.name_of_submitter}}
+            <br>
+            <br>
+            <label for="{{form.beginning_date.id_for_label}}" class="submission_label">
+                Week of Records
+            </label>
+            {{group_form.beginning_date}}
+            <input type="submit" class="btn submit-name" onclick="unhideSheetSubmission()">
+        </form>
+    </div>
+    <div id="add_after_me" class="equipment-section sheet-form">
+        <form method="post" class="">
+            {% csrf_token %}
+            <label for="{{form.equipment.id_for_label}}" class="submission_label">
+                Enter Equipment ID : 
+            </label>
+            {{sheet_form.equipment}}
+            <label for="{{form.image.id_for_label}}" class="submission_label">
+            </label>
+            {{sheet_form.image}}
+            <button class='btn remove-section btn-circle remover' onclick='removeSection(this)' disabled>Remove</button>  
+        </form>
+        <div class="">
+            <button class="btn btn-circle add-section " onclick="addSection()">New Vehicle</button>
+            <input type="button" class="btn btn-circle submit-button " value="Submit" onclick="submitForms()">
+            <script>
+                hideSheetSubmission();
+            </script>
+        </div>
+    </div>
+
+
+    <script>
+
+        function addSection() {
+            // const csrftoken = Cookies.get('csrftoken');
+            var eq_sec = document.getElementById("add_after_me");
+            eq_sec.insertAdjacentHTML("afterend", eq_sec.outerHTML);
+            disableButton();
+        }
+
+        function removeSection(button) {
+            // const csrftoken = Cookies.get('csrftoken');
+            var section_div = button.parentElement;
+            section_div.parentElement.removeChild(section_div);
+            disableButton();
+        }
+
+        function disableButton() {
+            // const csrftoken = Cookies.get('csrftoken');
+            var eq_sections = document.getElementsByClassName("equipment-section")
+            buttons = document.getElementsByClassName("remover")
+            if (eq_sections.length == 1) {
+                buttons[0].disabled = true;
+            } else {
+                var i;
+                for (i = 0; i < buttons.length; i++) {
+                    buttons[i].disabled = false;
+                }
+            }
+        }
+
+        function submitForms() {
+            for(var i=0, n=document.forms.length; i<n; i++){
+                alert("Form Submitted")
+                document.forms[i].onsubmit();
+            }
+        }
+
+        function unhideSheetSubmission() {
+            hidden_elements = document.getElementsByClassName("sheet-form")
+            for (var i = 0; i < hidden_elements.length; i++) {
+                hidden_elements[i].style.visibility = "visible";
+            }
+        }
+
+        function hideSheetSubmission() {
+            alert('Yo!')
+            hidden_elements = document.getElementsByClassName("sheet-form")
+            for (var i = 0; i < hidden_elements.length; i++) {
+                alert("hit loop!")
+                hidden_elements[i].style.visibility = "hidden";
+            }
+        }
+
+    </script>
+</body>
+</html>

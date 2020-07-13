@@ -1,0 +1,238 @@
+*{
+    text-align: center;
+}
+body{
+    background-color: brown;
+}
+th{
+    font-size: 2.5em;
+    background-color: rgb(155, 155, 155);
+}
+td{
+    font-size: 1.5em;
+}
+
+.greyer{
+    background-color: rgb(204, 204, 204);
+}
+.home-btn{
+    float: left;
+    color: white;
+    background-color: rgba(white, white, white, 0.0);
+    box-shadow: 0px 0px 12px 5px red;
+    margin-top: .65%;
+    font-weight: 900;
+    border: solid white .5px;
+}
+.float-right{
+    float: right;
+    margin-top: 0%;
+}
+.right-buttons{
+    color: white;
+    box-shadow: 0px 0px 12px 5px red;
+    margin-top: .65%;
+    font-weight: 900;
+    border: solid white .5px;    
+}
+.right-button{
+    background-color: black;
+    color: white;
+    border: solid whiet 2px;
+}
+table{
+    border: 5px solid black;
+    border-collapse: collapse;
+    margin-left: 1%;
+    width: 98%;
+}
+th, td{
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+table.datatable tr:hover td{
+    background-color: rgb(194, 137, 137);
+}
+.datatable{
+    padding-bottom: 1%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+    margin-right: 0%;
+}
+#equipment_sheet_selection{
+    vertical-align: middle;
+    align-items: center;
+    align-content: center;
+    float: right;
+}
+.ID{
+    font-weight: 700;
+}
+.column{
+    float: left;
+}
+.left{
+    width: 10%;
+    background-color: black;
+    border: 20px solid black;
+    border-radius: 12px;
+    margin-left: 1%;
+}
+.right{
+    width: 88%;
+}
+.dash-right{
+    width: 50%;
+}
+.dash-left{
+    left: 50%;
+}
+#top-bar{
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    background-color: black;
+    padding: 10px;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    border: 20px solid black;
+    border-radius: 12px;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+#title{
+    font-weight: 600;
+    display: inline;
+    border: #EE4540;
+}
+#subtitle{
+    font-size: 1em;
+    display: inline;
+}
+#dash_title{
+    color:  rgb(255, 255, 255);
+    font-family: Arial;
+    font-size: 1em;
+}
+#to_eq_page{
+    color: rgb(36, 39, 44);
+}
+.raisedbox { 
+    padding: 10px;
+    border: 1px solid grey;
+    box-shadow:  -1px 1px grey,
+        -2px 2px grey,
+        -3px 3px grey,
+        -4px 4px grey,
+        -5px 5px grey;
+}
+.dropbtn, .mybtn{
+    background-color: #EE4540;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(160deg, #C72C41 0%, rgba(165, 42, 42, 0.822) 35%, rgba(165, 42, 42, 0.397) 100%);
+}
+.dropdown {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px #EE4540;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    text-align: left;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #EE4540;
+}
+
+.right_dis{
+    color: white;
+    border: white 1px solid;
+}
+.submission_label{
+    font-size: 1.2em;
+    font-weight: 800;
+    text-decoration: underline;
+}
+.container {
+    width: 500px;
+    clear: both;
+    margin-bottom: 3%;
+}
+.container input{
+    width: 100%;
+    clear: both;
+}
+.equipment-section{
+    background-color: black;
+    color: white;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 10px solid black;
+    border-radius: 7px;
+}
+.add-section{
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5em;
+    border: 15px solid black;
+    border-radius: 55px;
+    margin-top: 2%;
+    border: solid white 2px; 
+}
+.submit-button{
+    background-color: brown;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5em;
+    border: 15px solid black;
+    border-radius: 55px;
+    margin-top: 2%;
+    width: 20%;
+}
+.remove-section{
+    background-color: red;
+    color: white;
+    font-weight: 400;
+    font-size: 1em;
+    border: 10px solid black;
+    border-radius: 35px;
+    float: right;
+    margin-top: 0%;
+}
+.hidden{
+    visibility: hidden;
+}
+.submit-name{
+    background-color: black;
+    color: white;
+    margin-top: 3%;
+    font-size: 1.6em;
+    font-weight: 600;
+}

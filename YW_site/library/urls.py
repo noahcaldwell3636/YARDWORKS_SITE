@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^ByMake/', views.render_table_bymake, name="bymake"),
     url(r'^equipment/', views.render_indiv_eq, name="eq_view"),
     url(r'^sheets/', views.render_eq_sheet_table, name="eq_sheet_view"),
+    url(r'^sheet_submission/', views.render_sheet_submission, name="sheet_submission"),
 ]
