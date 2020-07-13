@@ -18,15 +18,15 @@ from django.urls import path
 from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
-import library.views, home.views
+import app_library.views, app_home.views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$', home.views.render_login, name="home"),
-    url(r'^Home/', include('home.urls')),
-    url(r'^library/', include('library.urls')),
-    url(r'^reports/', include('reports.urls')),
+    url(r'^$', app_home.views.render_login, name="home"),
+    url(r'^Home/', include('app_home.urls')),
+    url(r'^library/', include('app_library.urls')),
+    url(r'^reports/', include('app_reports.urls')),
 ]
 
 if settings.DEBUG:

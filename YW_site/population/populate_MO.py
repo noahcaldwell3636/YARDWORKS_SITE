@@ -4,8 +4,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'YW_site.settings')
 import django
 django.setup()
 
-from library.models import MaintenanceOrder
-from library.models import Equipment
+from app_library.models import MaintenanceOrder
+from app_library.models import Equipment
 import os.path
 import xlrd
 

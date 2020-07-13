@@ -8,9 +8,9 @@ from django import setup
 setup()
 
 import os.path 
-from reports.models import CompanyGroup
-from reports.models import Company
-from reports.models import MonthlySalesTotal
+from app_reports.models import CompanyGroup
+from app_reports.models import Company
+from app_reports.models import MonthlySalesTotal
 import xlrd, csv
 
 

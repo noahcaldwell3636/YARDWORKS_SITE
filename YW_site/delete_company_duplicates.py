@@ -5,7 +5,7 @@ from django import setup
 setup()
 
 import os.path 
-from reports.models import Company, Invoice
+from app_reports.models import Company, Invoice
 import xlrd, csv
 
 Invoice.objects.all().delete()

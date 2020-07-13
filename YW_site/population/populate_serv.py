@@ -4,7 +4,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'YW_site.settings')
 import django
 django.setup()
 
-from library.models import Equipment, Services
+from app_library.models import Equipment, Services
 import os.path
 import xlrd
 

@@ -3,6 +3,8 @@
 }
 body{
     background-color: brown;
+    align-items: center;
+    text-align: center;
 }
 th{
     font-size: 2.5em;
@@ -174,8 +176,12 @@ table.datatable tr:hover td{
 .submission_label{
     font-size: 1.2em;
     font-weight: 800;
-    text-decoration: underline;
+    
 }
+.vertical-center {
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
 .container {
     width: 500px;
     clear: both;
@@ -205,16 +211,18 @@ table.datatable tr:hover td{
     border-radius: 55px;
     margin-top: 2%;
     border: solid white 2px; 
+    float: right;
+    margin-right: 5%;
 }
 .submit-button{
-    background-color: brown;
+    background-color: black;
     color: white;
     font-weight: 600;
     font-size: 1.5em;
-    border: 15px solid black;
+    border: 2px solid white;
     border-radius: 55px;
     margin-top: 2%;
-    width: 20%;
+    width: 15%;
 }
 .remove-section{
     background-color: red;

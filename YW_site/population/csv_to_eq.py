@@ -5,7 +5,7 @@ import django
 django.setup()
 
 import csv
-from library.models import Equipment
+from app_library.models import Equipment
 
 if __name__ == '__main__':
     print("<><><> starting equipment population <><><>")
