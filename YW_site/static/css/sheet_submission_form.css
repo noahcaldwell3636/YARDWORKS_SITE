@@ -174,14 +174,9 @@ table.datatable tr:hover td{
     border: white 1px solid;
 }
 .submission_label{
-    font-size: 1.2em;
-    font-weight: 800;
-    
+    font-size: 1em;
+    font-weight: 600;
 }
-.vertical-center {
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
 .container {
     width: 500px;
     clear: both;
@@ -237,10 +232,37 @@ table.datatable tr:hover td{
 .hidden{
     visibility: hidden;
 }
-.submit-name{
-    background-color: black;
-    color: white;
-    margin-top: 3%;
-    font-size: 1.6em;
-    font-weight: 600;
+.daterange{
+    width: 100%;
+}
+
+.name-week-col{
+    text-align: center;
+    align-items: center;
+    padding-top: 0%;
+}
+.up{
+    margin-top: -11%;
+}
+.submitter-input{
+    left: 50%;
+    display: block;
+}
+.bootstrap-datetimepicker-widget .datepicker-days table tbody tr:hover {
+    background-color: rgba(151, 49, 49, 0.829);
+}
+#weeklyDatePicker{
+    align-items: center;
+}
+.input-group{
+    align-items: center;
+    width: 150%;
+    left: 25%;
+}
+.center-items{
+    align-items: center;
+    vertical-align: center;
+}
+.full-width{
+    width: 20%;
 }

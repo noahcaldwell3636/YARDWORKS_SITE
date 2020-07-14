@@ -11,42 +11,69 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <!-- VUE.JS -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<!-- my css, delete the 'now U' tag on deployment, it reloads css each refresh --> 
+    <!-- Calender picker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    
+    <!-- my css, delete the 'now U' tag on deployment, it reloads css each refresh --> 
     <link rel="stylesheet" href="{% static "css/sheet_submission_form.css" %}?{% now "U" %}"> 
 </head>
 <body>
+    <!-- Title -->
     <h1>Equipment Sheet Submission</h1>
 
-    <div class="container">
-        
-    </div>
+    <!-- Sheet Submission Section -->
     <div id="add_after_me" class="equipment-section sheet-form">
+        <!-- Form -->
         <form method="post" class="forms" enctype="multipart/form-data" name="form1">
             {% csrf_token %}
-            <label for="{{form.name_of_submitter.id_for_label}}" class="submission_label" style="float: left;">
-                Your Name&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </label>
-            <div style="float: left;">{{form.name_of_submitter}}</div>
-            <br>
-            <br>
-            <label for="{{form.beginning_date.id_for_label}}" class="submission_label" style="float: left;">
-                Week of Records&nbsp;:&nbsp;
-            </label>
-            <div style="float: left;">{{form.beginning_date}}</div>
-            <label for="{{form.equipment.id_for_label}}" class="submission_label vertical-center">
-                Enter Equipment ID : {{form.equipment}}
-            </label>
-            <label for="{{form.image.id_for_label}}" class="submission_label vertical-center">
-                {{form.image}}
-            </label>
-            <button class='btn remove-section btn-circle remover' onclick='removeSection(this)' disabled>Remove</button>  
+            <table>
+                <tr>
+                    <td class="name-week-col full-width">
+                        <div class="up">
+                            <label class="submission_label up">
+                                Your Name
+                            </label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name">
+                        </div>
+                    </td>    
+                    <td>
+                        <label class="submission_label">
+                            Week of Records
+                        </label>
+                        <!-- Calendar Dropdown/ Week Picker -->
+                        <div class="container center-items">    
+                            <div class="row center-items">
+                                <div class="col-sm-6 form-group full-width center-items">
+                                    <div class="input-group center-items" id="DateDemo">
+                                      <input type='text' id='weeklyDatePicker' class="form-control weekly-picker" placeholder="Select Week" />
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                        <script src="{% static "js/PickWeek.js" %}"></script>
+                    </td>
+                    <td>  
+                        <label for="{{form.equipment.id_for_label}}" class="submission_label vertical-center ">
+                            Enter Equipment ID : {{form.equipment}}
+                        </label>
+                        <label for="{{form.image.id_for_label}}" class="submission_label vertical-center">
+                            {{form.image}}
+                        </label>
+                    </td>
+                    <td>
+                        <button class='btn remove-section btn-circle remover' onclick='removeSection(this)' disabled>Remove</button>  
+                    </td>
+                </tr>
+            </table>        
         </form>
     </div>
     <input type="button" class="btn btn-circle submit-button " value="Submit" onclick="submitForms()">
     <button class="btn btn-circle add-section " onclick="addSection()">New Vehicle</button>
 
     <script src="{% static "js/SheetSubmissionFunctions.js" %}"></script>
+    
 </body>
 </html>

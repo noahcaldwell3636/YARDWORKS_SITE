@@ -1,9 +1,12 @@
-
 function addSection() {
     // const csrftoken = Cookies.get('csrftoken');
     var eq_sec = document.getElementById("add_after_me");
     eq_sec.insertAdjacentHTML("afterend", eq_sec.outerHTML);
     disableButton();
+    inputs = document.getElementsByClassName("weekly-picker")
+    for (var i = 0; i < inputs.length; i++) {
+        alert(inputs[i])
+    }
 }
 
 function removeSection(button) {
@@ -42,11 +45,11 @@ function submitForms() {
         
         xhttp.open("POST", url, true);
         xhttp.setRequestHeader('X-CSRFToken', csrf.value); 
-        form_data.append("submitter", submitter.value);
-        form_data.append("date", date.value);
-        form_data.append("equipment", equipment_id.value);
-        form_data.append("image", image.value);
-        form_data.append("sub", submitter.value);
+        form_data.append("submitter_" + i, submitter.value);
+        form_data.append("date_" + i, date.value);
+        form_data.append("equipment_" + i, equipment_id.value);
+        form_data.append("image_" + i, image.value);
+        form_data.append("sub_" + i, submitter.value);
     }
     xhttp.send(form_data);
 }
