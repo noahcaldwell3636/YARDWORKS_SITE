@@ -1,12 +1,30 @@
+
+function calender() {
+    $(".weekly-picker").each(function(index) {
+            moment.locale('en', {
+            week: { dow: 1 } // Monday is the first day of the week
+        });
+        //Initialize the datePicker(I have taken format as mm-dd-yyyy, you can     //have your owh)
+        $(this).datetimepicker({
+            format: 'MM-DD-YYYY'
+        });
+        //Get the value of Start and End of Week
+        $(this).on('dp.change', function (e) {
+            var value = $(this).val();
+            var firstDate = moment(value, "MM-DD-YYYY").day(0).format("MM-DD-YYYY");
+            var lastDate =  moment(value, "MM-DD-YYYY").day(6).format("MM-DD-YYYY");
+            $(this).val(firstDate + " - " + lastDate);
+        });
+    });
+}
+
+
 function addSection() {
     // const csrftoken = Cookies.get('csrftoken');
     var eq_sec = document.getElementById("add_after_me");
     eq_sec.insertAdjacentHTML("afterend", eq_sec.outerHTML);
     disableButton();
-    inputs = document.getElementsByClassName("weekly-picker")
-    for (var i = 0; i < inputs.length; i++) {
-        alert(inputs[i])
-    }
+    calender()
 }
 
 function removeSection(button) {
