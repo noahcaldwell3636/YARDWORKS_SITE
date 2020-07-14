@@ -11,8 +11,8 @@ function calender() {
         //Get the value of Start and End of Week
         $(this).on('dp.change', function (e) {
             var value = $(this).val();
-            var firstDate = moment(value, "MM-DD-YYYY").day(0).format("MM-DD-YYYY");
-            var lastDate =  moment(value, "MM-DD-YYYY").day(6).format("MM-DD-YYYY");
+            var firstDate = moment(value, "MM-DD-YYYY").day(1).format("MM-DD-YYYY");
+            var lastDate =  moment(value, "MM-DD-YYYY").day(7).format("MM-DD-YYYY");
             $(this).val(firstDate + " - " + lastDate);
         });
     });
@@ -21,8 +21,9 @@ function calender() {
 
 function addSection() {
     // const csrftoken = Cookies.get('csrftoken');
-    var eq_sec = document.getElementById("add_after_me");
-    eq_sec.insertAdjacentHTML("afterend", eq_sec.outerHTML);
+    var eq_sections = document.getElementsByClassName("add_after_me");
+    var last_section = eq_sections[eq_sections.length - 1];
+    last_section.insertAdjacentHTML("afterend", last_section.outerHTML);
     disableButton();
     calender()
 }
