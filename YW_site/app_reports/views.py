@@ -7,8 +7,7 @@ import simplejson
 
 def render_report(request):
     # get report name
-    report = request.get_full_path().split("/")[-2].replace("-", " ").replace("(slash)", "/")
-    print(report)
+    report = request.get_full_path().split("/")[-1]
     if report == "Company Wide":
         return render_company_wide_sales(request, 'ReportPage.html')
     elif report == "DeliveryMap":
@@ -37,26 +36,38 @@ def render_sales_report(request, html_template):
     groups_query = CompanyGroup.objects.all()
     all_groups = CompanyGroup.objects.all().values_list('name', flat=True)
     # get group model object
+    print(group_name)
     try:
         group = CompanyGroup.objects.get(name=group_name)
-    except: # default group if group from url isn't valid
+    except Exception as e: # default group if group from url isn't valid
         group = CompanyGroup.objects.get(name=default_group)
+        print(group)
     # get companies within the group for the report
     companies = group.companies.all()
+    print(companies)
     # get company name from URL, reverses the "format_name_for_url" custom template method to return the normal company
     # name before it was modified to be put in the url
-    account = request.get_full_path().split("/")[-1].replace("-", " ").replace("(slash)", "/")
-    if account == 'All Companies':
+    company_name = request.get_full_path().split("/")[-1].replace("-", " ").replace("(slash)", "/")
+    print()
+    print()
+    print()
+    print(company_name)
+    print()
+    print()
+    print()
+
+    if company_name == 'All Companies':
         company = 'All Companies for ' + group_name
         invoices = get_all_companies_invoices(companies)
-    elif account == 'default':
+    elif company_name == 'default':
         company = companies.first()
         invoices = Invoice.objects.filter(company=company).order_by('date')
     else:
         # get model object/company by name
-        company = companies.get(account=account)
+        company = companies.get(name=company_name)
         # order monthly sales objects by year then month for company
         invoices = Invoice.objects.filter(company=company).order_by('date')
+
     # convert monthly data to a list of list for google chart
     monthly_totals = get_monthly_totals(invoices)
     # convert data to json so it can be passed to javascript/google charts
