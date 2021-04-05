@@ -97,7 +97,7 @@ def get_monthly_totals(invoices):
     easily converted to json format (using simplejson.dump) for google charts.
 
     @param QuerySet invoices -  A query set of one or more objects of type 'Invoice' which is 
-                                defined in this project in the app_reports.models file.
+                                defined in this project in the app_reports. models file.
 
     Output format:
     [
@@ -109,11 +109,11 @@ def get_monthly_totals(invoices):
     ]
     """
     monthly_totals = []
-    beginning_year = int(str(invoices.first().date).split("-")[0])
-    beginning_month = int(str(invoices.first().date).split("-")[1])
+    beginning_year = 2015 # int(str(invoices.first().date).split("-")[0])
+    beginning_month = 1 # int(str(invoices.first().date).split("-")[1])
     current_year, current_month = (datetime.datetime.now().year, datetime.datetime.now().month)
     for year in range(beginning_year, current_year+1):
-        # if outputtiing for current year, only output to current month
+        # if outputtiing for current year, only output up to current month
         if year == current_year:
             for month in range(1, current_month+1):
                 monthly_totals.append(total_sales_for_month(invoices, year, month))
