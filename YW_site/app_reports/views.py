@@ -2,7 +2,7 @@ from django.shortcuts import render
 from app_reports.models import Invoice, Company, CompanyGroup, EstablishedSite
 import datetime
 import simplejson
-
+from pprint import pprint
 # Create your views here  
 
 def render_report(request):
@@ -10,8 +10,6 @@ def render_report(request):
     report = request.get_full_path().split("/")[-1]
     if report == "Company Wide":
         return render_company_wide_sales(request, 'ReportPage.html')
-    elif report == "DeliveryMap":
-        return render_delivery_map(request, "DeliveryMap.html")
     else:
         return render_sales_report(request, "ReportPage.html")
 
@@ -48,13 +46,9 @@ def render_sales_report(request, html_template):
     # get company name from URL, reverses the "format_name_for_url" custom template method to return the normal company
     # name before it was modified to be put in the url
     company_name = request.get_full_path().split("/")[-1].replace("-", " ").replace("(slash)", "/")
-    print()
-    print()
-    print()
-    print(company_name)
-    print()
-    print()
-    print()
+
+    print("\n\n" + company_name + "\n\n")
+
 
     if company_name == 'All Companies':
         company = 'All Companies for ' + group_name
@@ -72,8 +66,7 @@ def render_sales_report(request, html_template):
     monthly_totals = get_monthly_totals(invoices)
     # convert data to json so it can be passed to javascript/google charts
     data_json = simplejson.dumps(monthly_totals)
-    # render html with tag data
-    return render(request, html_template, {
+    info = {
         'company':company, # WARNING: WILL RETURN A STRING WHEN THE REPORT IS FOR ALL COMPANIES WHICH MAY CAUSE ISSUES IF ANY COMPNAY FEILDs ARE ATTEMPTED TO BE REFERENCED IN THE HTML TEMPLATE
         'data': monthly_totals,
         'data_json': data_json,
@@ -81,7 +74,10 @@ def render_sales_report(request, html_template):
         'group_name': group_name,
         'groups': all_groups,
         'type': 'sales'
-    })
+    }
+    pprint(info)
+    # render html with tag data
+    return render(request, html_template, info)
 
 
 
