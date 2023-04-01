@@ -5,7 +5,7 @@ This is a project I created on my own time while working at Yard Works. I create
 it using Python/ Django to expand upon the company's ERP capabilities. Orignally
 the project was for learning purposes, the company evetually found use of it
 while wait for their new cloud-based platform.
-
+---
 This is not the full version but rather a prototype for public viewing. Some data
 displayed has been altered to protect private information.
 
