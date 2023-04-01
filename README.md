@@ -1,5 +1,6 @@
-![Yard Works Logo](/YW_site/static/photos/Logo.png)
-
+<p align="center">
+  <img src="/YW_site/static/photos/Logo.png" />
+</p>
 This is a project I created on my own time while working at Yard Works. I created
 it using Python/ Django to expand upon the company's ERP capabilities. Orignally
 the project was for learning purposes, the company evetually found use of it
