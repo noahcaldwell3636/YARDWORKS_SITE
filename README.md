@@ -1,4 +1,4 @@
-![Yard Works Logo](https://github.com/noahcaldwell3636/YARDWORKS_SITE/tree/master/YW_site/static/photos/Logo.png)
+![Yard Works Logo](https://github.com/noahcaldwell3636/YARDWORKS_SITE/tree/master/YW_site/static/photos/Logo.png?raw=true)
 
 This is a project I created on my own time while working at Yard Works. I created
 it using Python/ Django to expand upon the company's ERP capabilities. Orignally
