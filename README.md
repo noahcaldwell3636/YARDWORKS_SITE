@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/YW_site/static/photos/Logo.png" />
+  <img src="/YW_site/static/photos/Vector.png" />
 </p>
 This is a project I created on my own time while working at Yard Works. I created
 it using Python/ Django to expand upon the company's ERP capabilities. Orignally
