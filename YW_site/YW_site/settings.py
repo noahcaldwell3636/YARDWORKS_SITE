@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_rename_app',
     'app_home',
     'app_library',
     'app_reports',
@@ -128,6 +127,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
+STATIC_ROOT = "/static/"
 
 # increases the amount of model object I can delete from 1,000
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000

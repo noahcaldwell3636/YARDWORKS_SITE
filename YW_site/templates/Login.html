@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -49,7 +50,7 @@
     </style>
 </head>
 <body>
-    <img src="Photos/Logo.png" alt="Yard works logo online image not found" id="logo_img">
+    <img src="{% static "photos/Logo.png" %}" alt="Yard works logo online image not found" id="logo_img">
 
     <div class="block">
         <label>Email: </label><br>
