@@ -1,4 +1,4 @@
-![Yard Works Logo](YW_site\static\photos\readme\Vector.png)
+![Yard Works Logo](YW_site\static\photos\Logo.png)
 
 This is a project I created on my own time while working at Yard Works. I created
 it using Python/ Django to expand upon the company's ERP capabilities. Orignally
